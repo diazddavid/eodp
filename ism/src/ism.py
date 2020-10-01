@@ -32,13 +32,13 @@ class ism(initIsm):
 
             # Detection Stage
             # -------------------------------------------------------------------------------
-            myDet = detectionPhase(self.auxdir, self.indir, self.outdir)
-            toa = myDet.compute(toa, band)
+            # myDet = detectionPhase(self.auxdir, self.indir, self.outdir)
+            # toa = myDet.compute(toa, band)
 
             # Video Chain Phase
             # -------------------------------------------------------------------------------
-            myVcu = videoChainPhase(self.auxdir, self.indir, self.outdir)
-            toa = myVcu.compute(toa, band)
+            # myVcu = videoChainPhase(self.auxdir, self.indir, self.outdir)
+            # toa = myVcu.compute(toa, band)
 
             # Write output TOA
             # -------------------------------------------------------------------------------
@@ -47,5 +47,3 @@ class ism(initIsm):
             self.logger.info("End of BAND " + band)
 
         self.logger.info("End of the Instrument Module!")
-
-
