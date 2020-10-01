@@ -1,10 +1,12 @@
 
 # INSTRUMENT MODULE
-
-from ism.src.initIsm import initIsm
-from ism.src.opticalPhase import opticalPhase
-from ism.src.detectionPhase import detectionPhase
-from ism.src.videoChainPhase import videoChainPhase
+import sys, os
+sys.path.insert(0, '/home/luss/project/eodp_students/common')
+print("llega")
+from initIsm import initIsm
+from opticalPhase import opticalPhase
+from detectionPhase import detectionPhase
+from videoChainPhase import videoChainPhase
 from common.io.readCube import readCube
 from common.io.writeToa import writeToa
 

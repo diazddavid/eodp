@@ -1,4 +1,6 @@
 
+import os, sys
+
 from ism.src.initIsm import initIsm
 from math import pi
 from ism.src.mtf import mtf
@@ -11,7 +13,6 @@ from common.plot.plotMat2D import plotMat2D
 from common.plot.plotF import plotF
 from scipy.signal import convolve2d
 from common.src.auxFunc import getIndexBand
-import os
 
 class opticalPhase(initIsm):
 
@@ -92,6 +93,7 @@ class opticalPhase(initIsm):
         :return: TOA image in irradiances [mW/m2]
         """
         # TODO
+        toa = toa*Tr*py/4*((D/f)**2)
 
         return toa
 
@@ -126,6 +128,6 @@ class opticalPhase(initIsm):
             for iact in range(0, sgm_toa.shape[1]):
                 cs = interp1d(sgm_wv, sgm_toa[ialt,iact,:], fill_value=(0, 0), bounds_error=False)
                 toa_interp = cs(wv_isrf)
-                toa[iact, ialt] = np.sum(toa_interp*isrf_norm)
+                toa[ialt,iact] = np.sum(toa_interp*isrf_norm)
 
         return toa
