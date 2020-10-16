@@ -1,4 +1,6 @@
 
+import os, sys
+
 from ism.src.initIsm import initIsm
 from math import pi
 from ism.src.mtf import mtf
@@ -90,8 +92,10 @@ class opticalPhase(initIsm):
         :param Tr: Optical transmittance [-]
         :return: TOA image in irradiances [mW/m2]
         """
-        # TODO
-        return toa
+
+        TOA_I = toa*Tr*np.pi/4*((D/f)**2)
+
+        return TOA_I
 
 
     def applySysMtf(self, toa, Hsys):
@@ -101,9 +105,18 @@ class opticalPhase(initIsm):
         :param Hsys: System MTF
         :return: TOA image in irradiances [mW/m2]
         """
-        # TODO
+
+        toa_fft = fft2(toa)
+        Hsys_shift = fftshift(Hsys)
+        toa_MTF = toa_fft*Hsys_shift
+        toa_ft = ifft2(toa_MTF)
+        tol = np.ones(toa_ft.shape)*1e-10
+        if (toa_ft.imag < tol).all:
+            toa_ft = toa_ft.real
+
 
         return toa_ft
+
 
     def spectralIntegration(self, sgm_toa, sgm_wv, band):
         """
@@ -113,5 +126,16 @@ class opticalPhase(initIsm):
         :param band: band
         :return: TOA image 2D in radiances [mW/m2]
         """
-        # TODO
+        isrf, wv_isrf = readIsrf(self.auxdir+os.path.sep+self.ismConfig.isrffile, band)
+        wv_isrf = wv_isrf*1e3 # [nm]
+
+        isrf_norm = isrf/np.sum(isrf)
+        toa = np.zeros((sgm_toa.shape[0],sgm_toa.shape[1]))
+
+        for ialt in range(0,sgm_toa.shape[0]):
+            for iact in range(0, sgm_toa.shape[1]):
+                cs = interp1d(sgm_wv, sgm_toa[ialt,iact,:], fill_value=(0, 0), bounds_error=False)
+                toa_interp = cs(wv_isrf)
+                toa[ialt,iact] = np.sum(toa_interp*isrf_norm)
+
         return toa
