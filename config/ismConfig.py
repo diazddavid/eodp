@@ -72,8 +72,8 @@ class ismConfig:
         # Flags to enable or disable the application of noises and effects
         #--------------------------------------------------------------------------------
         # Optical stage. Use the PSF convolution. If False, will use the MTF
-        self.do_psf_conv = False
+        self.do_psf_conv = True
         # Detection stage errors and effects
-        self.apply_prnu = False
-        self.apply_dark_signal = False
-        self.apply_bad_dead = False
+        self.apply_prnu = True
+        self.apply_dark_signal = True
+        self.apply_bad_dead = True

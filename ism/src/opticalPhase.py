@@ -53,17 +53,17 @@ class opticalPhase(initIsm):
         # Spatial filter
         # -------------------------------------------------------------------------------
         # Calculation and application of the system MTF
-        # self.logger.info("EODP-ALG-ISM-1030: Spatial modelling. PSF/MTF")
-        # myMtf = mtf(self.logger)
-        # Hsys = myMtf.system_mtf(toa.shape[0], toa.shape[1],
-        #                         self.ismConfig.D, self.ismConfig.wv[getIndexBand(band)], self.ismConfig.f, self.ismConfig.pix_size,
-        #                         self.ismConfig.kLF, self.ismConfig.wLF, self.ismConfig.kHF, self.ismConfig.wHF,
-        #                         self.ismConfig.defocus, self.ismConfig.ksmear, self.ismConfig.kmotion,
-        #                         self.outdir, band)
-        #
-        # toa = self.applySysMtf(toa, Hsys) # always calculated
-        #
-        # self.logger.debug("TOA [0,0] " +str(toa[0,0]) + " [e-]")
+        self.logger.info("EODP-ALG-ISM-1030: Spatial modelling. PSF/MTF")
+        myMtf = mtf(self.logger)
+        Hsys = myMtf.system_mtf(toa.shape[0], toa.shape[1],
+                                self.ismConfig.D, self.ismConfig.wv[getIndexBand(band)], self.ismConfig.f, self.ismConfig.pix_size,
+                                self.ismConfig.kLF, self.ismConfig.wLF, self.ismConfig.kHF, self.ismConfig.wHF,
+                                self.ismConfig.defocus, self.ismConfig.ksmear, self.ismConfig.kmotion,
+                                self.outdir, band)
+
+        toa = self.applySysMtf(toa, Hsys) # always calculated
+
+        self.logger.debug("TOA [0,0] " +str(toa[0,0]) + " [e-]")
 
         # Write output TOA & plots
         # -------------------------------------------------------------------------------
@@ -92,10 +92,10 @@ class opticalPhase(initIsm):
         :param Tr: Optical transmittance [-]
         :return: TOA image in irradiances [mW/m2]
         """
-        # TODO
-        toa = toa*Tr*py/4*((D/f)**2)
 
-        return toa
+        TOA_I = toa*Tr*np.pi/4*((D/f)**2)
+
+        return TOA_I
 
 
     def applySysMtf(self, toa, Hsys):
@@ -105,7 +105,15 @@ class opticalPhase(initIsm):
         :param Hsys: System MTF
         :return: TOA image in irradiances [mW/m2]
         """
-        # TODO
+
+        toa_fft = fft2(toa)
+        Hsys_shift = fftshift(Hsys)
+        toa_MTF = toa_fft*Hsys_shift
+        toa_ft = ifft2(toa_MTF)
+        tol = np.ones(toa_ft.shape)*1e-10
+        if (toa_ft.imag < tol).all:
+            toa_ft = toa_ft.real
+
 
         return toa_ft
 
@@ -122,7 +130,7 @@ class opticalPhase(initIsm):
         wv_isrf = wv_isrf*1e3 # [nm]
 
         isrf_norm = isrf/np.sum(isrf)
-        toa = np.zeros(sgm_toa.shape[0],sgm_toa.shape[1])
+        toa = np.zeros((sgm_toa.shape[0],sgm_toa.shape[1]))
 
         for ialt in range(0,sgm_toa.shape[0]):
             for iact in range(0, sgm_toa.shape[1]):

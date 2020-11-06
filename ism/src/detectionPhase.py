@@ -4,6 +4,8 @@ import numpy as np
 from common.io.writeToa import writeToa
 from common.plot.plotMat2D import plotMat2D
 from common.plot.plotF import plotF
+import scipy.constants as sci_cte
+from numpy.random import default_rng
 
 class detectionPhase(initIsm):
 
@@ -32,7 +34,6 @@ class detectionPhase(initIsm):
         toa = self.phot2Electr(toa, self.ismConfig.QE)
 
         self.logger.debug("TOA [0,0] " +str(toa[0,0]) + " [e-]")
-
         if self.ismConfig.save_after_ph2e:
             saveas_str = self.globalConfig.ism_toa_e + band
             writeToa(self.outdir, saveas_str, toa)
@@ -104,7 +105,11 @@ class detectionPhase(initIsm):
         :param wv: Central wavelength of the band [m]
         :return: Toa in photons
         """
-        # TODO
+
+        Ein = toa*area_pix*tint
+        Ephoton = sci_cte.Planck*sci_cte.c/wv
+        toa_ph = Ein/Ephoton
+
         return toa_ph
 
     def phot2Electr(self, toa, QE):
@@ -114,7 +119,8 @@ class detectionPhase(initIsm):
         :param QE: Quantum efficiency [e-/ph]
         :return: toa in electrons
         """
-        # TODO
+
+        toae = toa*QE
 
         return toae
 
@@ -128,7 +134,19 @@ class detectionPhase(initIsm):
         :param dead_pix_red: Reduction in the quantum efficiency for the dead pixels [-, over 1]
         :return: toa in e- including bad & dead pixels
         """
-        # TODO
+
+        total_bad_px_line = int(np.round(toa.shape[1]*bad_pix/100))
+        total_dead_px_line = int(np.round(toa.shape[1]*dead_pix/100))
+
+        rng = default_rng()
+        bad_pix = rng.choice(toa.shape[1]-1, size=(total_bad_px_line), replace=False)
+        dead_pix = rng.choice(toa.shape[1]-1, size=(total_dead_px_line), replace=False)
+
+        for ialt in range(toa.shape[0]):
+            for iact in bad_pix:
+                toa[ialt,iact] = toa[ialt,iact] * bad_pix_red
+            for iact in dead_pix:
+                toa[ialt,iact] = toa[ialt,iact] * dead_pix_red
 
         return toa
 
@@ -140,12 +158,15 @@ class detectionPhase(initIsm):
         :return: TOA after adding PRNU [e-]
         """
         # Calculate the 1D PRNU ACT
-        # TODO
+        np.random.seed(self.ismConfig.seed)
+        prnu_eff = kprnu*np.random.normal(0, 1, toa.shape[1])
 
+        toa_out = np.zeros(toa.shape)
         # Apply PRNU to the input TOA
-        # TODO
+        for ialt in range(toa.shape[0]):
+            toa_out[ialt,:] = toa[ialt,:]*(1+prnu_eff)
 
-        return toa
+        return toa_out
 
 
     def darkSignal(self, toa, kdsnu, T, Tref, ds_A_coeff, ds_B_coeff):
@@ -160,11 +181,15 @@ class detectionPhase(initIsm):
         :return: TOA in [e-] with dark signal
         """
         # Calculate the 1D DS ACT
-        # TODO
-
+        DSNU = kdsnu*np.abs(np.random.normal(0, 1, toa.shape[1]))
+        Sd = ds_A_coeff*((T/Tref)**3)*np.exp(-ds_B_coeff*(1/T - 1/Tref))
+        ds = Sd*(1+DSNU)
         self.logger.debug("Dark signal Sd " + str(ds) + " [e-]")
 
         # Apply DSNU to the input TOA
-        # TODO
+        toa_out = np.zeros(toa.shape)
+        # Apply PRNU to the input TOA
+        for ialt in range(toa.shape[0]):
+            toa_out[ialt,:] = toa[ialt,:] + ds
 
-        return toa
+        return toa_out

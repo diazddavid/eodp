@@ -1,4 +1,4 @@
-from config import ismConfig
+from config.ismConfig import ismConfig
 from common.src.baseModule import baseModule
 
 class initIsm(baseModule):
