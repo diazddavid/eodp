@@ -33,7 +33,7 @@ class detectionPhase(initIsm):
         self.logger.info("EODP-ALG-ISM-2030: Photons to Electrons")
         toa = self.phot2Electr(toa, self.ismConfig.QE)
 
-        self.logger.debug("TOA [0,0] " +str(toa[0,0]) + " [e-]")
+        self.logger.debug("TOA [0,0] " + str(toa[0,0]) + " [e-]")
         if self.ismConfig.save_after_ph2e:
             saveas_str = self.globalConfig.ism_toa_e + band
             writeToa(self.outdir, saveas_str, toa)
@@ -59,7 +59,7 @@ class detectionPhase(initIsm):
             toa = self.darkSignal(toa, self.ismConfig.kdsnu, self.ismConfig.T, self.ismConfig.Tref,
                                   self.ismConfig.ds_A_coeff, self.ismConfig.ds_B_coeff)
 
-            self.logger.debug("TOA [0,0] " +str(toa[0,0]) + " [e-]")
+            self.logger.debug("TOA [0,0] " + str(toa[0,0]) + " [e-]")
 
             if self.ismConfig.save_after_ds:
                 saveas_str = self.globalConfig.ism_toa_ds + band
@@ -135,18 +135,32 @@ class detectionPhase(initIsm):
         :return: toa in e- including bad & dead pixels
         """
 
-        total_bad_px_line = int(np.round(toa.shape[1]*bad_pix/100))
-        total_dead_px_line = int(np.round(toa.shape[1]*dead_pix/100))
+        total_bad_px_line = int(toa.shape[1]*bad_pix/100)
+        total_dead_px_line = int(toa.shape[1]*dead_pix/100)
 
-        rng = default_rng()
-        bad_pix = rng.choice(toa.shape[1]-1, size=(total_bad_px_line), replace=False)
-        dead_pix = rng.choice(toa.shape[1]-1, size=(total_dead_px_line), replace=False)
+        step_bad = int(100/bad_pix)
+        if total_dead_px_line != 0:
+            step_dead = int(100/dead_pix)
 
-        for ialt in range(toa.shape[0]):
-            for iact in bad_pix:
-                toa[ialt,iact] = toa[ialt,iact] * bad_pix_red
-            for iact in dead_pix:
-                toa[ialt,iact] = toa[ialt,iact] * dead_pix_red
+        out_file_bad = self.outdir + "bad_index.txt"
+        out_file_dead = self.outdir + "dead_index.txt"
+
+        idx_bad = range(5, toa.shape[1] - step_bad, step_bad)
+        file_bad = open(out_file_bad, 'w')
+        file_bad.write("Total number of bad index: " + str(total_bad_px_line) + '\n\n')
+        for idx in idx_bad:
+            file_bad.write(str(idx)+'\n')
+        file_bad.close()
+        toa[:, idx_bad] = toa[:, idx_bad]*(1-bad_pix_red)
+
+        file_dead = open(out_file_dead, 'w')
+        file_dead.write("Total number of dead index: " + str(total_dead_px_line) + '\n\n')
+        if total_dead_px_line != 0:
+            idx_dead = range(0, toa.shape[1], step_dead)
+            for idx in idx_dead:
+                file_dead.write(str(idx) + '\n')
+            toa[:, idx_dead] = toa[:, idx_dead]*(1-dead_pix_red)
+        file_dead.close()
 
         return toa
 
