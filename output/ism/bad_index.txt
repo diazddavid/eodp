@@ -1,0 +1,3 @@
+Total number of bad index: 1
+
+5

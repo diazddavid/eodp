@@ -18,7 +18,7 @@ indir_base = os.path.join(project_path, 'eodp_data', 'EODP-TS-L1C', 'input')
 indir1 = str(os.path.join(indir_base, 'gm_alt100_act_150'))
 indir2 = str(os.path.join(indir_base, 'l1b_output'))
 indir = indir1 + ',' + indir2
-outdir = (os.path.join(project_path, 'output', 'l1c'))
+outdir = (os.path.join(parent_path, 'output', 'l1c'))
 print("L1C auxdir: " + auxdir)
 print("L1C indir: " + indir)
 print("L1C outdir: " + outdir)

@@ -19,7 +19,7 @@ class videoChainPhase(initIsm):
                          self.ismConfig.OCF,
                          self.ismConfig.ADC_gain)
 
-        self.logger.debug("TOA [0,0] " +str(toa[0,0]) + " [V]")
+        self.logger.debug("TOA [0,0] " + str(toa[0,0]) + " [V]")
 
         # Digitisation
         # -------------------------------------------------------------------------------
@@ -57,6 +57,7 @@ class videoChainPhase(initIsm):
         """
 
         toa = toa * OCF * gain_adc
+
         return toa
 
     def digitisation(self, toa, bit_depth, min_voltage, max_voltage):
@@ -69,10 +70,9 @@ class videoChainPhase(initIsm):
         :return: toa in digital counts
         """
 
-        toa_dn = np.round((toa/(max_voltage - min_voltage)) * (2**(bit_depth) - 1))
+        toa_dn = np.round(toa/(max_voltage - min_voltage)) * (2**(bit_depth) - 1)
 
         # Make sure DN is not above the saturation level
-
         for ialt in range(toa_dn.shape[0]):
             for iact in range(toa_dn.shape[1]):
                 if toa_dn[ialt, iact] > 2**(bit_depth) - 1:

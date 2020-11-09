@@ -19,6 +19,7 @@ class ism(initIsm):
 
         # Read input TOA cube
         # -------------------------------------------------------------------------------
+        print(self.globalConfig.scene)
         sgm_toa, sgm_wv = readCube(self.indir, self.globalConfig.scene)
 
         for band in self.globalConfig.bands:

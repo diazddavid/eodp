@@ -13,7 +13,7 @@ parent_path = path.parent.parent
 project_path = parent_path.parent
 auxdir = str(os.path.join(parent_path, 'auxiliary'))
 indir = str(os.path.join(project_path, 'eodp_data', 'EODP-TS-ISM', 'input', 'gradient_alt100_act150'))
-outdir = str(os.path.join(project_path, 'output', 'ism'))
+outdir = str(os.path.join(parent_path, 'output', 'ism'))
 print("ISM auxdir: " + auxdir)
 print("ISM indir: " + indir)
 print("ISM outdir: " + outdir)

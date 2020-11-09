@@ -62,7 +62,9 @@ class l1b(initL1b):
         :return: TOA in DN, equalized
         """
 
-        toa_out = (toa - eq_add)/eq_mult
+        toa_out = np.zeros(toa.shape)
+        for ialt in range(toa.shape[0]):
+            toa_out[ialt,:] = (toa[ialt,:] - eq_add)/(eq_mult)
 
         return toa_out
 

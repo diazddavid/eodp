@@ -38,8 +38,8 @@ class opticalPhase(initIsm):
 
         if self.ismConfig.save_after_isrf:
             saveas_str = self.globalConfig.ism_toa_isrf + band
-            writeToa(self.outdir, saveas_str, toa)
 
+            writeToa(self.outdir, saveas_str, toa)
         # Radiance to Irradiance conversion
         # -------------------------------------------------------------------------------
         self.logger.info("EODP-ALG-ISM-1020: Radiances to Irradiances")

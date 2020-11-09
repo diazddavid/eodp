@@ -15,7 +15,7 @@ parent_path = path.parent.parent
 project_path = parent_path.parent
 auxdir = str(os.path.join(parent_path, 'auxiliary'))
 indir = str(os.path.join(project_path, 'eodp_data', 'EODP-TS-L1B', 'input'))
-outdir = str(os.path.join(project_path, 'output', 'l1b'))
+outdir = str(os.path.join(parent_path, 'output', 'l1b'))
 print("L1B auxdir: " + auxdir)
 print("L1B indir: " + indir)
 print("L1B outdir: " + outdir)

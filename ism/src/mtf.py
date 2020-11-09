@@ -69,7 +69,6 @@ class mtf:
         self.logger.debug("Calculation of the Sysmtem MTF by multiplying the different contributors")
 
         Hsys = Hdiff * Hdefoc * Hwfe * Hdet * Hsmear * Hmotion
-
         # Plot cuts ACT/ALT of the MTF
         self.plotMtf(Hdiff, Hdefoc, Hwfe, Hdet, Hsmear, Hmotion, Hsys, nlines, ncolumns, fnAct, fnAlt, directory, band)
 
@@ -102,8 +101,8 @@ class mtf:
         if ncolumns != len(fAct):
             raise Exception('Error in the frequency calculation. Columns TOA ' + str(ncolumns) + ' Sizes of the frequencies ACT ' + str(len(fAct)) )
 
-        fnAlt = fAlt/w
-        fnAct = fAct/w
+        fnAlt = fAlt/(1/w)
+        fnAct = fAct/(1/w)
 
         [fnAltxx, fnActxx] = np.meshgrid(fnAlt, fnAct, indexing='ij')
         fn2D = np.sqrt(fnAltxx*fnAltxx + fnActxx*fnActxx)
@@ -187,7 +186,6 @@ class mtf:
         smearAlt = np.zeros((len(fnAlt),1))
         smearAlt[:,0]=np.sinc(ksmear*fnAlt)
         Hsmear = np.tile(smearAlt,(1,ncolumns))
-
         return Hsmear
 
     def mtfMotion(self, fn2D, kmotion):
