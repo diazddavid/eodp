@@ -1,0 +1,39 @@
+L1C auxdir: /home/luss/project/eodp_students/auxiliary
+L1C indir: /home/luss/project/eodp_data/EODP-TS-L1C/input/gm_alt100_act_150,/home/luss/project/eodp_data/EODP-TS-L1C/input/l1b_output
+L1C outdir: /home/luss/project/eodp_students/output/l1c
+<class 'str'>
+/home/luss/project/eodp_data/EODP-TS-L1C/input/gm_alt100_act_150,/home/luss/project/eodp_data/EODP-TS-L1C/input/l1b_output
+2020-11-09 23:12:05,603 - L1C - INFO     - Start of the L1C Processing Module
+2020-11-09 23:12:05,603 - L1C - INFO     - Start of BAND VNIR-0
+Reading /home/luss/project/eodp_data/EODP-TS-L1C/input/l1b_output/l1b_toa_VNIR-0.nc
+Size of matrix (100, 150)
+Reading /home/luss/project/eodp_data/EODP-TS-L1C/input/gm_alt100_act_150/geolocation.nc
+Size of matrix (100, 150)
+2020-11-09 23:12:06,816 - L1C - INFO     - Iterate for each MGRS tile found
+Finished writting: /home/luss/project/eodp_students/output/l1c/l1c_toa_VNIR-0.nc
+2020-11-09 23:12:07,327 - L1C - INFO     - End of BAND VNIR-0
+2020-11-09 23:12:07,327 - L1C - INFO     - Start of BAND VNIR-1
+Reading /home/luss/project/eodp_data/EODP-TS-L1C/input/l1b_output/l1b_toa_VNIR-1.nc
+Size of matrix (100, 150)
+Reading /home/luss/project/eodp_data/EODP-TS-L1C/input/gm_alt100_act_150/geolocation.nc
+Size of matrix (100, 150)
+2020-11-09 23:12:15,811 - L1C - INFO     - Iterate for each MGRS tile found
+Finished writting: /home/luss/project/eodp_students/output/l1c/l1c_toa_VNIR-1.nc
+2020-11-09 23:12:16,233 - L1C - INFO     - End of BAND VNIR-1
+2020-11-09 23:12:16,233 - L1C - INFO     - Start of BAND VNIR-2
+Reading /home/luss/project/eodp_data/EODP-TS-L1C/input/l1b_output/l1b_toa_VNIR-2.nc
+Size of matrix (100, 150)
+Reading /home/luss/project/eodp_data/EODP-TS-L1C/input/gm_alt100_act_150/geolocation.nc
+Size of matrix (100, 150)
+2020-11-09 23:12:48,593 - L1C - INFO     - Iterate for each MGRS tile found
+Finished writting: /home/luss/project/eodp_students/output/l1c/l1c_toa_VNIR-2.nc
+2020-11-09 23:12:49,021 - L1C - INFO     - End of BAND VNIR-2
+2020-11-09 23:12:49,022 - L1C - INFO     - Start of BAND VNIR-3
+Reading /home/luss/project/eodp_data/EODP-TS-L1C/input/l1b_output/l1b_toa_VNIR-3.nc
+Size of matrix (100, 150)
+Reading /home/luss/project/eodp_data/EODP-TS-L1C/input/gm_alt100_act_150/geolocation.nc
+Size of matrix (100, 150)
+2020-11-09 23:13:00,013 - L1C - INFO     - Iterate for each MGRS tile found
+Finished writting: /home/luss/project/eodp_students/output/l1c/l1c_toa_VNIR-3.nc
+2020-11-09 23:13:00,448 - L1C - INFO     - End of BAND VNIR-3
+2020-11-09 23:13:00,449 - L1C - INFO     - End of the L1C Module!

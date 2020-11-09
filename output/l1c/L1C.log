@@ -12,3 +12,36 @@
 2020-11-06 11:05:34,571 - L1C - INFO     - Iterate for each MGRS tile found
 2020-11-06 11:05:35,034 - L1C - INFO     - End of BAND VNIR-3
 2020-11-06 11:05:35,034 - L1C - INFO     - End of the L1C Module!
+2020-11-09 23:10:53,644 - L1C - INFO     - Start of the L1C Processing Module
+2020-11-09 23:10:53,645 - L1C - INFO     - Start of BAND VNIR-0
+2020-11-09 23:10:55,179 - L1C - INFO     - Iterate for each MGRS tile found
+2020-11-09 23:10:55,713 - L1C - INFO     - End of BAND VNIR-0
+2020-11-09 23:10:55,713 - L1C - INFO     - Start of BAND VNIR-1
+2020-11-09 23:11:07,479 - L1C - INFO     - Start of the L1C Processing Module
+2020-11-09 23:11:07,480 - L1C - INFO     - Start of BAND VNIR-0
+2020-11-09 23:11:08,685 - L1C - INFO     - Iterate for each MGRS tile found
+2020-11-09 23:11:09,236 - L1C - INFO     - End of BAND VNIR-0
+2020-11-09 23:11:09,237 - L1C - INFO     - Start of BAND VNIR-1
+2020-11-09 23:11:17,018 - L1C - INFO     - Iterate for each MGRS tile found
+2020-11-09 23:11:17,468 - L1C - INFO     - End of BAND VNIR-1
+2020-11-09 23:11:17,468 - L1C - INFO     - Start of BAND VNIR-2
+2020-11-09 23:11:46,440 - L1C - INFO     - Iterate for each MGRS tile found
+2020-11-09 23:11:46,866 - L1C - INFO     - End of BAND VNIR-2
+2020-11-09 23:11:46,867 - L1C - INFO     - Start of BAND VNIR-3
+2020-11-09 23:11:55,664 - L1C - INFO     - Iterate for each MGRS tile found
+2020-11-09 23:11:56,115 - L1C - INFO     - End of BAND VNIR-3
+2020-11-09 23:11:56,116 - L1C - INFO     - End of the L1C Module!
+2020-11-09 23:12:05,603 - L1C - INFO     - Start of the L1C Processing Module
+2020-11-09 23:12:05,603 - L1C - INFO     - Start of BAND VNIR-0
+2020-11-09 23:12:06,816 - L1C - INFO     - Iterate for each MGRS tile found
+2020-11-09 23:12:07,327 - L1C - INFO     - End of BAND VNIR-0
+2020-11-09 23:12:07,327 - L1C - INFO     - Start of BAND VNIR-1
+2020-11-09 23:12:15,811 - L1C - INFO     - Iterate for each MGRS tile found
+2020-11-09 23:12:16,233 - L1C - INFO     - End of BAND VNIR-1
+2020-11-09 23:12:16,233 - L1C - INFO     - Start of BAND VNIR-2
+2020-11-09 23:12:48,593 - L1C - INFO     - Iterate for each MGRS tile found
+2020-11-09 23:12:49,021 - L1C - INFO     - End of BAND VNIR-2
+2020-11-09 23:12:49,022 - L1C - INFO     - Start of BAND VNIR-3
+2020-11-09 23:13:00,013 - L1C - INFO     - Iterate for each MGRS tile found
+2020-11-09 23:13:00,448 - L1C - INFO     - End of BAND VNIR-3
+2020-11-09 23:13:00,449 - L1C - INFO     - End of the L1C Module!
