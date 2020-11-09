@@ -1,0 +1,117 @@
+commit 135d2909b710d6123afaabc8c5d8a7b47d522d6e
+Author: luss <lucia.soto@deimos-space.com>
+Date:   Mon Nov 9 23:20:52 2020 +0100
+
+    adding logs
+
+commit 147c8b76a137924ac806d9c853609206a03708ee
+Author: luss <lucia.soto@deimos-space.com>
+Date:   Mon Nov 9 22:33:25 2020 +0100
+
+    Final Version
+
+commit c3ddd0af6a6195ed94234e645a8d1043e86bff1d
+Author: luss <lucia.soto@deimos-space.com>
+Date:   Sat Nov 7 11:11:36 2020 +0100
+
+    Bad/dead pixel corrected
+
+commit e7271dd2500e0e5cbb9c7589d257b8c6900b52da
+Merge: 6bfc724 9294c44
+Author: diazddavid <diazrivasdavid5@gmail.com>
+Date:   Fri Nov 6 12:17:05 2020 +0100
+
+    Merge branch 'offline_developping'
+
+commit 6bfc724fbcda2d2db3d1f4b5ada546660a6616af
+Author: diazddavid <diazrivasdavid5@gmail.com>
+Date:   Fri Nov 6 12:03:57 2020 +0100
+
+    Final revision of main program, still to finish tests
+
+commit 9294c44d5f5da672551f2af6e0854b2eb42981d5
+Author: diazddavid <diazrivasdavid5@gmail.com>
+Date:   Mon Oct 26 17:30:44 2020 +0100
+
+    L1C Level
+
+commit 97d429efa1a1def02e99ccee597ee50c3d2ce5aa
+Author: diazddavid <diazrivasdavid5@gmail.com>
+Date:   Sat Oct 24 13:12:05 2020 +0100
+
+    L1B Level
+
+commit e2d97bcd9acad42838ffc14f924751f743735fb1
+Author: diazddavid <diazrivasdavid5@gmail.com>
+Date:   Sun Oct 18 11:10:04 2020 +0100
+
+    ISM Video phase completed
+
+commit 6ec7a44540354d8d3e41b2d464d0655caca591a5
+Author: diazddavid <diazrivasdavid5@gmail.com>
+Date:   Sat Oct 17 18:24:53 2020 +0100
+
+    ISM Detection phase completed
+
+commit e9d10cc029de29c1a8c7fb8d08bc02361ffca461
+Author: diazddavid <diazrivasdavid5@gmail.com>
+Date:   Sat Oct 17 12:12:33 2020 +0100
+
+    ISM MTF completed
+
+commit 9586b694cc2a54ca4859dd7bb3a6a0bf437cf165
+Author: diazddavid <diazrivasdavid5@gmail.com>
+Date:   Fri Oct 16 19:33:24 2020 +0100
+
+    ISM optical phase completed
+
+commit a3fc89f9d09c22b826a2454880ee0bc68c0a5a2d
+Author: luss <lucia.soto@deimos-space.com>
+Date:   Fri Oct 16 16:33:32 2020 +0200
+
+    Working ism
+
+commit 7f153c7b032d46c28651ca6a7f50335cbd3ffb24
+Author: luss <lucia.soto@deimos-space.com>
+Date:   Thu Oct 1 18:58:30 2020 +0200
+
+    end o class
+
+commit 01a0dbe87ac3b407426c1561954822e03ac1e026
+Author: luss <lucia.soto@deimos-space.com>
+Date:   Thu Oct 1 18:10:04 2020 +0200
+
+    remove chrome error file + changes related with toa
+
+commit e20d5e14bb039c261ba16fe4fa1d6efb5e2d2bf5
+Author: luss <lucia.soto@deimos-space.com>
+Date:   Thu Oct 1 17:37:12 2020 +0200
+
+    Toggle some modules in ism
+
+commit 85cd11ba7525608b38f6b90ba5b7a2cff220163b
+Merge: c73ea0c 6e676bd
+Author: lsotouc3m <66434738+lsotouc3m@users.noreply.github.com>
+Date:   Thu Sep 24 17:27:25 2020 +0200
+
+    Merge pull request #1 from lsotouc3m/develop
+    
+    test
+
+commit 6e676bd92f480914b3d388bc6b1246ec266d2c63
+Author: luss <lucia.soto@deimos-space.com>
+Date:   Thu Sep 24 17:26:14 2020 +0200
+
+    test
+
+commit c73ea0c17630344845d491ff4ff6acedb6f38889
+Author: luss <lucia.soto@deimos-space.com>
+Date:   Mon Sep 14 09:26:06 2020 +0200
+
+    Source code for EODP
+
+commit ec15b2cf8211c118c29d591ca0607850b29bc37c
+Author: lsotouc3m <66434738+lsotouc3m@users.noreply.github.com>
+Date:   Fri Aug 21 09:15:57 2020 +0200
+
+    Initial commit
